@@ -1,0 +1,18 @@
+package working_with_wd_methods;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class FirstLineOfCode {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+     WebDriver wb=new ChromeDriver();
+     wb.get("https://www.facebook.com/");
+     String title=wb.getTitle();
+     System.out.println(title);
+     System.out.println(wb.getCurrentUrl());
+     System.out.println(wb.getPageSource());
+     wb.quit();
+	}
+}
