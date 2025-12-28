@@ -1,0 +1,23 @@
+package working_with_wd_methods;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Locator {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://demowebshop.tricentis.com/");
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+		
+		WebElement reg=driver.findElement(By.linkText("Register"));
+		reg.click();
+		WebElement log=driver.findElement(By.partialLinkText("L"));
+		log.click();
+		Thread.sleep(3000);
+		driver.quit();
+	}
+
+}
