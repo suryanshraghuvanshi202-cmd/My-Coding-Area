@@ -16,5 +16,4 @@ public class Locator {
 		Thread.sleep(3000);
 		driver.quit();
 	}
-
 }
