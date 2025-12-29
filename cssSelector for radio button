@@ -1,0 +1,22 @@
+package working_with_wd_methods;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Locator {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://demowebshop.tricentis.com/");
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+		WebElement radio=driver.findElement(By.xpath("//label[text()='Excellent']/../..//input"));
+		radio.click();
+		Thread.sleep(3000);
+		WebElement vote=driver.findElement(By.cssSelector("input[class='button-2 vote-poll-button']"));
+		vote.click();
+		Thread.sleep(2000);
+		driver.quit();
+	}
+}
