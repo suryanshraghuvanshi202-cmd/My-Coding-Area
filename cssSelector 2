@@ -13,7 +13,14 @@ public class Locator {
 		Thread.sleep(2000);
 		WebElement sin = driver.findElement(By.cssSelector("input[id='newsletter-subscribe-button']"));
 		sin.click();
+		Thread.sleep(4000);
+		WebElement radio=driver.findElement(By.xpath("//label[text()='Excellent']/../..//input"));
+		radio.click();
+		Thread.sleep(3000);
+		WebElement vote=driver.findElement(By.cssSelector("input[class='button-2 vote-poll-button']"));
+		vote.click();
 		Thread.sleep(2000);
 		driver.quit();
 	}
 }
+
