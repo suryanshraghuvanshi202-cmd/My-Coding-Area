@@ -17,6 +17,9 @@ public static void main(String[] args) throws InterruptedException {
 	WebElement pwd=driver.findElement(By.name("password"));
 	pwd.sendKeys("Advocate@1969");
 	Thread.sleep(1000);
+	WebElement log=driver.findElement(By.className("_aswr"));
+	log.click();
+	Thread.sleep(5000);
 	driver.quit();
 }
 }
