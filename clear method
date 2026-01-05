@@ -14,7 +14,7 @@ public class Locator1 {
 		driver.manage().window().maximize();
 		Thread.sleep(200);
 		driver.get("https://demowebshop.tricentis.com/");
-		WebElement ex=driver.findElement(By.id("small-searchterms"));
+		WebElement ex=driver.findElement(By.xpath("//input[@id='small-searchterms']"));
 		ex.click();
 		Thread.sleep(2000);
 		ex.sendKeys("Bakku");
