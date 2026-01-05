@@ -1,0 +1,25 @@
+package working_with_locators;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Locator1 {
+
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		Thread.sleep(200);
+		driver.get("https://demowebshop.tricentis.com/");
+		WebElement ex=driver.findElement(By.xpath("//label[text()='Excellent']/../input"));
+		ex.click();
+		Thread.sleep(2000);
+		WebElement vote=driver.findElement(By.xpath("//input[@value='Vote']"));
+		vote.click();
+		Thread.sleep(2000);
+		driver.quit();
+	}
+}
