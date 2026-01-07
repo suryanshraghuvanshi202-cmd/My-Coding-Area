@@ -1,0 +1,63 @@
+package PractiseAuto;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.Rectangle;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Locators {
+
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.facebook.com/r.php?entry_point=login");
+		WebElement fn = driver.findElement(By.xpath("//input[@aria-label='First name']"));
+		fn.sendKeys("admin");
+		Thread.sleep(1000);
+		fn.clear();
+		Thread.sleep(2000);
+		fn.sendKeys("rahul");
+		WebElement un = driver.findElement(By.xpath("//label[text()='Male']/input"));
+		un.click();
+		if (un.isDisplayed() && un.isEnabled()) {
+			un.click();
+			if (un.isSelected()) {
+				System.out.println("Male radio is selected...");
+			}
+		}
+		WebElement submit=driver.findElement(By.name("websubmit"));
+		submit.click();
+		String tag =submit.getTagName();
+		String id = submit.getAttribute("id");
+		String cv = submit.getCssValue("font-family");
+		String cv1 = submit.getCssValue("font-weight");
+		String vt = submit.getText();
+		System.out.println(tag);
+		System.out.println(id);
+		System.out.println(cv);
+		System.out.println(cv1);
+		System.out.println(vt);
+		Dimension dim=submit.getSize();
+		Point pt=submit.getLocation();
+		Rectangle rect=submit.getRect();
+		System.out.println(dim);
+		System.out.println(pt);
+		System.out.println(rect);
+		System.out.println(rect.getX());
+		System.out.println(rect.getHeight());
+		System.out.println(rect.getWidth());
+		System.out.println(rect.getY());
+		System.out.println(rect.getDimension());
+		System.out.println(rect.getPoint());
+		if (submit.isEnabled()) {
+			submit.submit();
+		} else {
+			System.out.println("signup is not clickable...");
+		}
+		Thread.sleep(3000);
+		driver.quit();
+	}
+}
