@@ -1,0 +1,33 @@
+package working_with_dropdown;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.bidi.module.Input;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Dropdown {
+
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver=new EdgeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://the-internet.herokuapp.com/dynamic_controls");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3000));
+		WebElement rem=driver.findElement(By.cssSelector("button[onclick='swapCheckbox()']"));
+		rem.click();
+		WebElement add=driver.findElement(By.xpath("//button[text()='Add']"));
+		add.click();
+		WebElement enb=driver.findElement(By.xpath("//button[text()='Enable']"));
+		enb.click();
+		WebElement enb1=driver.findElement(By.xpath("//button[text()='Disable']"));
+		enb.click();
+		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(2000));
+		wait1.until(ExpectedConditions.elementToBeClickable(enb1));
+		Thread.sleep(5000);
+		driver.quit();
+	}
+}
