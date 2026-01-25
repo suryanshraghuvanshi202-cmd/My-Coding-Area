@@ -1,0 +1,43 @@
+package Dropdown_New;
+
+import java.time.Duration;
+import java.util.Iterator;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Dropdown {
+
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver=new EdgeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2000));
+		driver.get("https://automationwithpiyush.vercel.app/dropdown.html");
+		WebElement ckdd=driver.findElement(By.id("single-select"));
+		Select sel=new Select(ckdd);
+		//sel.selectByIndex(1);
+		sel.selectByValue("DXB");
+		//sel.selectByVisibleText("New York, USA");
+//		List<WebElement> ssdd=sel.getOptions();
+//		for (WebElement i : ssdd)
+//		{
+//			String text = i.getText();
+//			System.out.println(text);
+//		}
+		Thread.sleep(3000);
+		WebElement mdd=driver.findElement(By.id("multi-select"));
+		Select sle =new Select(mdd);
+		List<WebElement> msd=sle.getOptions();
+		for (WebElement i : msd)
+		{
+			String test = i.getText();
+			System.out.println(test);
+		}
+		Thread.sleep(3000);
+		driver.quit();
+	}
+}
