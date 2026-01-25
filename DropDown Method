@@ -19,8 +19,8 @@ public class Dropdown {
 		driver.get("https://automationwithpiyush.vercel.app/dropdown.html");
 		WebElement ckdd=driver.findElement(By.id("single-select"));
 		Select sel=new Select(ckdd);
-		//sel.selectByIndex(1);
-		sel.selectByValue("DXB");
+		sel.selectByIndex(2);
+		//sel.selectByValue("DXB");
 		//sel.selectByVisibleText("New York, USA");
 //		List<WebElement> ssdd=sel.getOptions();
 //		for (WebElement i : ssdd)
@@ -37,7 +37,26 @@ public class Dropdown {
 			String test = i.getText();
 			System.out.println(test);
 		}
+		Thread.sleep(2000);
+		List<WebElement> all=sel.getAllSelectedOptions();
+		for(WebElement i : all) 
+		{
+			System.out.println(i.getText());
+		}
 		Thread.sleep(3000);
+		WebElement first = sel.getFirstSelectedOption();
+		String fst=first.getText();
+		System.out.println(fst);
+		Thread.sleep(2000);
+		if (sel.isMultiple())
+		{
+			sel.deselectAll();
+		}
+		if (sle.isMultiple())
+		{
+			sle.deselectAll();
+		}
+		Thread.sleep(1000);
 		driver.quit();
 	}
 }
