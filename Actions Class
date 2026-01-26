@@ -16,8 +16,15 @@ public class ActionClass {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2000));
 		driver.get("https://automationwithpiyush.vercel.app/actions.html");
 		Actions act=new Actions(driver);
+		//Hover
 		WebElement we=driver.findElement(By.xpath("//button"));
 		act.moveToElement(we).build().perform();
+		act.click(we).build().perform();
+		Thread.sleep(2000);
+		//Left Click
+		WebElement lc=driver.findElement(By.id("click-text"));
+		act.moveToElement(lc).build().perform();
+		act.click(lc).build().perform();
 		Thread.sleep(3000);
 		driver.quit();
 	}
