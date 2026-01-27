@@ -43,6 +43,16 @@ public class ActionClass {
 		//act.release().build().perform();
 		act.release(ho).build().perform();
 		Thread.sleep(4000);
+		//DragAndDrop
+		WebElement src=driver.findElement(By.id("cap-ottawa"));
+		WebElement dest=driver.findElement(By.id("target-canada"));
+		act.dragAndDrop(src, dest).build().perform();
+		Thread.sleep(2000);
+		//Hover
+		WebElement Hov=driver.findElement(By.id("//input[@id='pulse-slider']"));
+		act.moveToElement(Hov).moveByOffset(20, 0).click().build().perform();
+		act.moveToElement(Hov, 20, 0).click().build().perform();
+		Thread.sleep(2000);
 		driver.quit();
 	}
 }
