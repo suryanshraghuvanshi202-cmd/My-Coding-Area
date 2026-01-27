@@ -3,6 +3,7 @@ package Action_Class;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -20,38 +21,45 @@ public class ActionClass {
 		WebElement we=driver.findElement(By.xpath("//button"));
 		act.moveToElement(we).build().perform();
 		act.click(we).build().perform();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		//Left Click
 		WebElement lc=driver.findElement(By.id("click-text"));
 		act.moveToElement(lc).build().perform();
 		act.click(lc).build().perform();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		//Right Click
 		WebElement rc=driver.findElement(By.xpath("//i[@class='fas fa-mouse text-3xl mb-3 text-gray-600']"));
 		act.moveToElement(rc).build().perform();
 		act.contextClick(rc).build().perform();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		//Double Click
-		WebElement dc=driver.findElement(By.xpath("//i[@class='fas fa-bolt text-3xl mb-3 text-gray-600']"));
+		WebElement dc=driver.findElement(By.id("double-click-area"));
 		act.moveToElement(dc).build().perform();
 		act.doubleClick().build().perform();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		//Click and Hold ----//div[@id='click-hold']
-		WebElement ho=driver.findElement(By.xpath("//i[@class='fas fa-bolt text-3xl mb-3 text-gray-600']"));
+		WebElement ho=driver.findElement(By.className("fa-fingerprint"));
 		act.moveToElement(ho).build().perform();
-		act.clickAndHold().build().perform();
+		act.clickAndHold(ho).build().perform();
 		//act.release().build().perform();
 		act.release(ho).build().perform();
-		Thread.sleep(4000);
+		Thread.sleep(5000);
 		//DragAndDrop
-		WebElement src=driver.findElement(By.id("cap-ottawa"));
-		WebElement dest=driver.findElement(By.id("target-canada"));
+		WebElement src=driver.findElement(By.id("prod-laptop"));
+		WebElement dest=driver.findElement(By.id("cart-zone"));
 		act.dragAndDrop(src, dest).build().perform();
 		Thread.sleep(2000);
 		//Hover
-		WebElement Hov=driver.findElement(By.id("//input[@id='pulse-slider']"));
-		act.moveToElement(Hov).moveByOffset(20, 0).click().build().perform();
-		act.moveToElement(Hov, 20, 0).click().build().perform();
+//		WebElement Hov=driver.findElement(By.id("//input[@id='pulse-slider']"));
+//		act.moveToElement(Hov).moveByOffset(20, 0).click().build().perform();
+//		act.moveToElement(Hov, 20, 0).click().build().perform();
+//		Thread.sleep(2000);
+		//
+		driver.navigate().to("https://www.facebook.com/");
+		Thread.sleep(2000);
+		act.sendKeys("Admin").build().perform();
+		act.keyDown(Keys.TAB).keyUp(Keys.TAB).build().perform();
+		act.sendKeys("Password").build().perform();
 		Thread.sleep(2000);
 		driver.quit();
 	}
