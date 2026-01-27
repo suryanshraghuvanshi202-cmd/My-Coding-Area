@@ -45,16 +45,16 @@ public class ActionClass {
 		act.release(ho).build().perform();
 		Thread.sleep(5000);
 		//DragAndDrop
-		WebElement src=driver.findElement(By.id("prod-laptop"));
+		WebElement src=driver.findElement(By.id("prod-phone"));
 		WebElement dest=driver.findElement(By.id("cart-zone"));
 		act.dragAndDrop(src, dest).build().perform();
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		//Hover
-//		WebElement Hov=driver.findElement(By.id("//input[@id='pulse-slider']"));
-//		act.moveToElement(Hov).moveByOffset(20, 0).click().build().perform();
-//		act.moveToElement(Hov, 20, 0).click().build().perform();
-//		Thread.sleep(2000);
-		//
+		WebElement Hov=driver.findElement(By.id("pulse-slider"));
+		act.moveToElement(Hov).moveByOffset(50, 0).click().build().perform();
+	//	act.moveToElement(Hov, 30, 0).click().build().perform();
+		Thread.sleep(3000);
+		//===================
 		driver.navigate().to("https://www.facebook.com/");
 		Thread.sleep(2000);
 		act.sendKeys("Admin").build().perform();
