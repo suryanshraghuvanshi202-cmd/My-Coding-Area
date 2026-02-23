@@ -1,0 +1,46 @@
+package CreateOrganisationTest;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+
+public class OrganisationProject {
+public static void main(String[] args) throws InterruptedException {
+	WebDriver driver=new EdgeDriver();
+	driver.manage().window().maximize();
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2000));
+	driver.get("http://localhost:8888/");
+	WebElement usn=driver.findElement(By.name("user_name"));
+	usn.sendKeys("admin");
+	WebElement pass=driver.findElement(By.name("user_password"));
+	pass.sendKeys("admin");
+	driver.findElement(By.id("submitButton")).click();
+	Thread.sleep(2000);
+	driver.findElement(By.linkText("Organizations")).click();
+	Thread.sleep(1000);
+	driver.findElement(By.cssSelector("img[title='Create Organization...']")).click();
+	Thread.sleep(1000);
+	String orgN="Qspider123456437";
+	WebElement orgName=driver.findElement(By.name("accountname"));
+	orgName.sendKeys(orgN);
+	driver.findElement(By.cssSelector("input[title='Save [Alt+S]']")).click();
+	Thread.sleep(2000);
+	String actOrgName=driver.findElement(By.id("dtlview_Organization Name")).getText();
+	boolean status = actOrgName.equals(orgN);
+			if (status){
+				System.out.println("Organisation Created Successfully....");
+			}
+			else
+			{
+				System.out.println("Failed");
+			}
+	WebElement signoff = driver.findElement(By.cssSelector("img[src='themes/softed/images/user.PNG']"));
+	signoff.click();
+	driver.findElement(By.linkText("Sign Out")).click();
+	Thread.sleep(2000);
+	driver.quit();
+}
+}
