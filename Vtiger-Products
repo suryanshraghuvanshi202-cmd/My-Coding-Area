@@ -1,0 +1,40 @@
+package CreateProductTest;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class CreateProductTest {
+public static void main(String[] args) throws InterruptedException {
+	WebDriver driver = new ChromeDriver();
+	driver.manage().window().maximize();
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+	driver.get("http://localhost:8888/");
+	WebElement username = driver.findElement(By.name("user_name"));
+	username.sendKeys("admin");
+	WebElement password = driver.findElement(By.name("user_password"));
+	password.sendKeys("admin");
+	driver.findElement(By.id("submitButton")).click();
+	driver.findElement(By.linkText("Products")).click();
+	driver.findElement(By.cssSelector("img[title='Create Product...']")).click();
+	String orgName = "Raghu";
+	WebElement orgField = driver.findElement(By.name("productname"));
+	orgField.sendKeys(orgName);
+	driver.findElement(By.cssSelector("input[title='Save [Alt+S]']")).click();
+	String actOrgName = driver.findElement(By.id("dtlview_Product Name")).getText();
+	boolean status = actOrgName.equals(orgName);
+	if (status) {
+		System.out.println("Product created successfully!!!");
+	} else {
+		System.out.println("Failed.....");
+	}
+	WebElement profile = driver.findElement(By.cssSelector("img[src='themes/softed/images/user.PNG']"));
+	profile.click();
+	driver.findElement(By.linkText("Sign Out")).click();
+	Thread.sleep(3000);
+	driver.quit();
+}
+}
